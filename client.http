@@ -11,11 +11,15 @@
 # }
 
 
-# @name authenticate
-POST {{baseUrl}}/sessions
-Content-Type: application/json
+# # @name authenticate
+# POST {{baseUrl}}/sessions
+# Content-Type: application/json
 
-{
-    "email": "tiago18deoliveira@gmail.com",
-    "password": "1234"
-}
+# {
+#     "email": "tiago18deoliveira@gmail.com",
+#     "password": "1234"
+# }
+
+# @name create_question
+POST {{baseUrl}}/questions
+Content-Type: application/json

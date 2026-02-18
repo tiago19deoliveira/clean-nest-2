@@ -1,7 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module.js";
 import { ConfigService } from "@nestjs/config";
-import { performanceTimestampProvider } from "rxjs/internal/scheduler/performanceTimestampProvider";
 import { Env } from "./env.js";
 
 async function bootstrap() {
