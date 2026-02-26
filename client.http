@@ -1,12 +1,13 @@
 @baseUrl = http://localhost:3000
+//@authToken = {{authenticate.response.body.access_token}}
 
 # # @name create_account
 # POST {{baseUrl}}/accounts
 # Content-Type: application/json
 
 # {
-#     "name": "Tiago jr",
-#     "email": "tiago18deoliveira@gmail.com",
+#     "name": "Tiago oliveira",
+#     "email": "tiago11deoliveira@gmail.com",
 #     "password": "1234"
 # }
 
@@ -20,6 +21,8 @@
 #     "password": "1234"
 # }
 
+
 # @name create_question
 POST {{baseUrl}}/questions
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzIwNzI1MTN9.rAI0AqszsyioS1OyTKwS5ZLxU2MYOJFu7AWsXcodLc5FEPv-q-HF1t6YUvHOK92Q3TdyRJuDCA16ty8D4XUS8IpAXEa4LCfl5-Gd5S5EQonP4NEbXC_qjnAPSi4fw4tJynF5_r6lbIVREMtpQZodTNnvkdb8wsU5FYs3fBl_P_IAp_w86YodS8saRA82JG7VHREUmrGg_WBxHl_3J50q6oaJssC7vaZTN6qih3KyKQiJplWT2DtMGt5-sfqqPOGxqeEr7GGbRg6A9siSR39cSAqu63zlZ5otyVA9em5ZKU8GxfOMhkov654Ne9Xs5A5uBfr3MwCFDFaN1kIj36Eudg
