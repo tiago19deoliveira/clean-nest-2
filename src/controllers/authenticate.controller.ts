@@ -31,7 +31,7 @@ export class AuthenticateController {
     });
 
     if (!user) {
-      throw new UnauthorizedException("usuário sem permiss~çao");
+      throw new UnauthorizedException("usuário sem permissão");
     }
 
     const isPasswordVlid = await compare(password, user.password);
