@@ -7,6 +7,7 @@ import { AuthModule } from "./auth/auth.module";
 import { AuthenticateController } from "./controllers/authenticate.controller";
 import { CreateQuestionController } from "./controllers/create-question.controller";
 import { JwtStrategy } from "./auth/jwt.strategy";
+import { FetchQuestionController } from "./controllers/fetch-recent-questions-controller";
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -19,6 +20,7 @@ import { JwtStrategy } from "./auth/jwt.strategy";
     CreateAccountController,
     AuthenticateController,
     CreateQuestionController,
+    FetchQuestionController,
   ],
   providers: [PrismaService],
 })

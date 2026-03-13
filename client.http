@@ -20,12 +20,17 @@
 #     "password": "1234"
 # }
 
-# @name create_question
-POST {{baseUrl}}/questions
+# # @name create_question
+# POST {{baseUrl}}/questions
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzM0MDQzMDB9.b-5Tbf295V0Y3jWEktjJkdl2qgWz1_RXDk7do0yjdz6676Jbh2hcOs0QUgqdgu0lVJOuh0b7op9CnshENa_XoMQrUdIsCQGrLpdUH9vFGGeLNcQeby8de8J5b6suxTw4NhfFxvp9UvLda8cqa0953ax9h8PIS1mev9a_R8zJJKEkTS5EcJ5uVNVkq8iv_ArTOK8NVWJ334FL1cHqv9AEq1O4_FDaO1efi6_2-Fa8p4h58gGuv-Po1ZpnmIvhgcX-PQPgH09-GxZPwQhG38U12hihsvbDWrZNKexUBA4zy-QYLSYbz7R2ccZyexp0oyYY0BEhW92pDOq0W4unzoO46Q
+
+# {
+#     "title": "Nova pergunta 2",
+#     "content":"Conteúdo da segunda pergunta"
+# }
+
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions?page=2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzM0MDQzMDB9.b-5Tbf295V0Y3jWEktjJkdl2qgWz1_RXDk7do0yjdz6676Jbh2hcOs0QUgqdgu0lVJOuh0b7op9CnshENa_XoMQrUdIsCQGrLpdUH9vFGGeLNcQeby8de8J5b6suxTw4NhfFxvp9UvLda8cqa0953ax9h8PIS1mev9a_R8zJJKEkTS5EcJ5uVNVkq8iv_ArTOK8NVWJ334FL1cHqv9AEq1O4_FDaO1efi6_2-Fa8p4h58gGuv-Po1ZpnmIvhgcX-PQPgH09-GxZPwQhG38U12hihsvbDWrZNKexUBA4zy-QYLSYbz7R2ccZyexp0oyYY0BEhW92pDOq0W4unzoO46Q
-
-{
-    "title": "Nova pergunta",
-    "content":"Conteúdo da primeira pergunta"
-}
