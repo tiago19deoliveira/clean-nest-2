@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -6,6 +7,7 @@ import { AuthGuard } from "@nestjs/passport";
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe";
 import z, { TypeOf } from "zod";
 import { FetchRecentQuestionsUseCase } from "@/domain/forum/application/use-cases/fetch-recent-questions";
+import { QuestionPresenter } from "../presenters/question-presenter";
 
 const pageQueryParamSchema = z
   .string()
@@ -25,10 +27,15 @@ export class FetchQuestionController {
 
   @Get()
   async handle(@Query("page", queryValidationPipe) page: PageQueryParamSchema) {
-    const questions = await this.fetchRecenteQuestions.execute({
+    const result = await this.fetchRecenteQuestions.execute({
       page,
     });
 
-    return { questions };
+    if (result.isLeft()) {
+      throw new Error();
+    }
+    const questions = result.value.questions;
+
+    return { questions: questions.map((q) => QuestionPresenter.toHTTP(q)) };
   }
 }
