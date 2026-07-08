@@ -1,36 +1,34 @@
 @baseUrl = http://localhost:3000
-//@authToken = {{authenticate.response.body.access_token}}
-
 # # @name create_account
 # POST {{baseUrl}}/accounts
 # Content-Type: application/json
+
 # {
-#     "name": "Tiago oliveira",
-#     "email": "tiago11deoliveira@gmail.com",
+#     "name": "Tiago Aeksio",
+#     "email": "drazenkaAeksioVhaelor@gmail.com",
 #     "password": "1234"
 # }
-
 
 # # @name authenticate
 # POST {{baseUrl}}/sessions
 # Content-Type: application/json
 
 # {
-#     "email": "tiago18deoliveira@gmail.com",
+#     "email": "drazenkaAeksioVhaelor@gmail.com",
 #     "password": "1234"
 # }
 
 # # @name create_question
 # POST {{baseUrl}}/questions
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzM0MDQzMDB9.b-5Tbf295V0Y3jWEktjJkdl2qgWz1_RXDk7do0yjdz6676Jbh2hcOs0QUgqdgu0lVJOuh0b7op9CnshENa_XoMQrUdIsCQGrLpdUH9vFGGeLNcQeby8de8J5b6suxTw4NhfFxvp9UvLda8cqa0953ax9h8PIS1mev9a_R8zJJKEkTS5EcJ5uVNVkq8iv_ArTOK8NVWJ334FL1cHqv9AEq1O4_FDaO1efi6_2-Fa8p4h58gGuv-Po1ZpnmIvhgcX-PQPgH09-GxZPwQhG38U12hihsvbDWrZNKexUBA4zy-QYLSYbz7R2ccZyexp0oyYY0BEhW92pDOq0W4unzoO46Q
+# Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkM2E1OGEzZi04MGNlLTRkMjUtOGM5NS02ZTQzYjI3MWU5ZWIiLCJpYXQiOjE3ODM0OTEwMzV9.dyWep_XIpiUtU1XaqZPCdGXJeoa3O9lRtMI_uyGizfR-D1uoXwigs91w6j0NF6Y5FpVow-Ci-dkZrcENAKOSq8q6N1HXC2-dLpAefO7iqWdrQyclOyJEFsT0AzMBc297OeLYhIDetrN7YBzgo-O7lXMqsKZgDOHmtR2GYw3Mko1kiLJPS9i3B4HHNVXOsqk1ADXc55YaFHhm4tnn47TkLshP9Wq-o2ToFm53E2vfoBzluVLQ4LEzGMl9mWuMzmm0T5gi5nmeJKfy2Zpv4SzwE7N4jhIDrKI6xyTGjCXV6rtvKXtoXTGo9po2LhpRUGKJkPiC7x_8WWXL2S9Uv4k87Q
 
 # {
-#     "title": "Nova pergunta 2",
-#     "content":"Conteúdo da segunda pergunta"
+#     "title": "Nova pergunta drazenka",
+#     "content":"Vhaelor o governante."
 # }
 
-# @name fetch_recent_questions
-GET {{baseUrl}}/questions?page=2
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzM0MDQzMDB9.b-5Tbf295V0Y3jWEktjJkdl2qgWz1_RXDk7do0yjdz6676Jbh2hcOs0QUgqdgu0lVJOuh0b7op9CnshENa_XoMQrUdIsCQGrLpdUH9vFGGeLNcQeby8de8J5b6suxTw4NhfFxvp9UvLda8cqa0953ax9h8PIS1mev9a_R8zJJKEkTS5EcJ5uVNVkq8iv_ArTOK8NVWJ334FL1cHqv9AEq1O4_FDaO1efi6_2-Fa8p4h58gGuv-Po1ZpnmIvhgcX-PQPgH09-GxZPwQhG38U12hihsvbDWrZNKexUBA4zy-QYLSYbz7R2ccZyexp0oyYY0BEhW92pDOq0W4unzoO46Q
+# # @name fetch_recent_questions
+# GET {{baseUrl}}/questions?page=2
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNGQxMzY1Yi0wN2VkLTQ3ODYtYjA2OC0xZWNiNzY3NTVlNTAiLCJpYXQiOjE3NzM0MDQzMDB9.b-5Tbf295V0Y3jWEktjJkdl2qgWz1_RXDk7do0yjdz6676Jbh2hcOs0QUgqdgu0lVJOuh0b7op9CnshENa_XoMQrUdIsCQGrLpdUH9vFGGeLNcQeby8de8J5b6suxTw4NhfFxvp9UvLda8cqa0953ax9h8PIS1mev9a_R8zJJKEkTS5EcJ5uVNVkq8iv_ArTOK8NVWJ334FL1cHqv9AEq1O4_FDaO1efi6_2-Fa8p4h58gGuv-Po1ZpnmIvhgcX-PQPgH09-GxZPwQhG38U12hihsvbDWrZNKexUBA4zy-QYLSYbz7R2ccZyexp0oyYY0BEhW92pDOq0W4unzoO46Q

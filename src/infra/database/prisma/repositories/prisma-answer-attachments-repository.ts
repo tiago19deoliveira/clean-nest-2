@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AnswerAttachmentsRepository } from "@/domain/forum/application/repositories/answer-attachments-repository";
 import { AnswerAttachment } from "@/domain/forum/enterprise/entities/answer-attachment";
 import { Injectable } from "@nestjs/common";

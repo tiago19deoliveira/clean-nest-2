@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  Body,
-  ConflictException,
-  Controller,
-  HttpCode,
-  Post,
-  UsePipes,
-} from "@nestjs/common";
-import { hash } from "bcryptjs";
+import { Body, Controller, HttpCode, Post, UsePipes } from "@nestjs/common";
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { z } from "zod";
+import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student";
 
 const createAccountBodySchema = z.object({
   name: z.string(),
@@ -24,31 +16,21 @@ type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>;
 
 @Controller("/accounts")
 export class CreateAccountController {
-  constructor(private prisma: PrismaService) {}
+  constructor(private registerStudent: RegisterStudentUseCase) {}
+
   @Post()
   @HttpCode(201)
   @UsePipes(new ZodValidationPipe(createAccountBodySchema))
   async handle(@Body() body: CreateAccountBodySchema) {
     const { name, email, password } = body;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const userWithSameEmail = await this.prisma.user.findUnique({
-      where: {
-        email,
-      },
+    const result = await this.registerStudent.execute({
+      name,
+      email,
+      password,
     });
 
-    if (userWithSameEmail) {
-      throw new ConflictException("Já existe um usuário com esse email ");
+    if (result.isLeft()) {
+      throw new Error();
     }
-
-    const hashedPassword = await hash(password, 8);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    await this.prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-      },
-    });
   }
 }
