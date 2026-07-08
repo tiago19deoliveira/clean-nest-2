@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Controller, Get, Query, UseGuards } from "@nestjs/common";
+import {
+  BadRequestException,
+  Controller,
+  Get,
+  Query,
+  UseGuards,
+} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { ZodValidationPipe } from "@/infra/http/pipes/zod-validation-pipe";
 import z, { TypeOf } from "zod";
@@ -32,8 +38,9 @@ export class FetchQuestionController {
     });
 
     if (result.isLeft()) {
-      throw new Error();
+      throw new BadRequestException();
     }
+
     const questions = result.value.questions;
 
     return { questions: questions.map((q) => QuestionPresenter.toHTTP(q)) };
