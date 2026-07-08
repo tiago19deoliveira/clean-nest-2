@@ -18,6 +18,10 @@ describe("Create account (e2e)", () => {
     prisma = moduleRef.get(PrismaService);
 
     await app.init();
+    // ensure clean database state for e2e
+    await prisma.answer.deleteMany();
+    await prisma.question.deleteMany();
+    await prisma.user.deleteMany();
   });
 
   test("[POST] /accounts", async () => {

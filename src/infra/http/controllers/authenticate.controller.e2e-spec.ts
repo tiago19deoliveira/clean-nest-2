@@ -3,6 +3,7 @@ import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import request from "supertest";
+import { hash } from "bcryptjs";
 
 describe("Authenticate (E2E)", () => {
   let app: INestApplication;
@@ -18,6 +19,10 @@ describe("Authenticate (E2E)", () => {
     prisma = moduleRef.get(PrismaService);
 
     await app.init();
+    // ensure clean database state for e2e
+    await prisma.answer.deleteMany();
+    await prisma.question.deleteMany();
+    await prisma.user.deleteMany();
   });
 
   test("[POST] /sessions", async () => {
@@ -25,7 +30,7 @@ describe("Authenticate (E2E)", () => {
       data: {
         name: "jhon shadow",
         email: "jhonShadow@gmail.com",
-        password: "123456",
+        password: await hash("123456", 8),
       },
     });
 

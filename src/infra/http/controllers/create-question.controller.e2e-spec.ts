@@ -4,6 +4,7 @@ import { INestApplication } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Test } from "@nestjs/testing";
 import request from "supertest";
+import { hash } from "bcryptjs";
 
 describe("Create Question (e2e)", () => {
   let app: INestApplication;
@@ -22,6 +23,10 @@ describe("Create Question (e2e)", () => {
     jwt = moduleRef.get(JwtService);
 
     await app.init();
+    // ensure clean database state for e2e
+    await prisma.answer.deleteMany();
+    await prisma.question.deleteMany();
+    await prisma.user.deleteMany();
   });
 
   test("[POST] /questions", async () => {
@@ -29,7 +34,7 @@ describe("Create Question (e2e)", () => {
       data: {
         name: "jhon shadow",
         email: "jhonShadow@gmail.com",
-        password: "222222",
+        password: await hash("222222", 8),
       },
     });
 
