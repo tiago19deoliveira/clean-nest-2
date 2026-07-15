@@ -11,6 +11,7 @@ import {
 import z from "zod";
 import { AuthenticateStudentUseCase } from "@/domain/forum/application/use-cases/authenticate-student";
 import { WrongCredentialsError } from "@/domain/forum/application/use-cases/errors/wrong-credentials-error";
+import { Public } from "@/infra/auth/public";
 
 const authenticatetBodySchema = z.object({
   email: z.string().email(),
@@ -20,6 +21,7 @@ const authenticatetBodySchema = z.object({
 type AuthenticateBodySchema = z.infer<typeof authenticatetBodySchema>;
 
 @Controller("/sessions")
+@Public()
 export class AuthenticateController {
   constructor(private authenticateStudent: AuthenticateStudentUseCase) {}
 
